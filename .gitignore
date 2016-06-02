@@ -1,6 +1,7 @@
 *
 !*/
 !*.c
+!*.x
 !*.h
 !*.fuse
 !README.md
