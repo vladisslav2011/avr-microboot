@@ -1,7 +1,8 @@
+#include "bootloaderconfig.h"
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
-#include <avr/delay.h>
+#include <util/delay.h>
 #include <avr/wdt.h>
 #include <avr/boot.h>
 

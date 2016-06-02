@@ -8,7 +8,9 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 #include "../firmware/bootloaderconfig.h"
-#define BAUDRATE B9600
+#define CC(a,b) a##b
+#define BB(x) CC(B,x)
+#define BAUDRATE BB(USART_BAUD)
 
 uint8_t * buf=NULL;
 uint8_t * vbuf=NULL;

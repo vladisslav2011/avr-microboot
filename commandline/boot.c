@@ -9,7 +9,8 @@
 #include <sys/ioctl.h>
 #include "../firmware/bootloaderconfig.h"
 
-#define BAUDRATE B9600
+#define CC(a,b) a##b
+#define BB(x) CC(B,x)
 
 uint8_t * buf=NULL;
 uint8_t * vbuf=NULL;
@@ -28,8 +29,8 @@ int openuart(char * fn)
 	cnew.c_oflag=0;
 	cnew.c_cflag=CS8|CREAD|CLOCAL;
 	cnew.c_lflag=0;
-	cfsetospeed(&cnew,BAUDRATE);
-	cfsetispeed(&cnew,BAUDRATE);
+	cfsetospeed(&cnew,BB(USART_BAUD));
+	cfsetispeed(&cnew,BB(USART_BAUD));
 	if(tcsetattr(fd,TCSANOW,&cnew)<0)
 	{
 		close(fd);
