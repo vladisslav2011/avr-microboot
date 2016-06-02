@@ -57,7 +57,7 @@ avrdude:
 
 clean:
 	rm -f main.lst main.obj main.cof main.list main.map main.eep.hex *.o main.s \
-		*.els dummy.bin main.elf bootupdate.elf bin2h 0xff checksize $(TARGETS)
+		*.els dummy.bin main.elf bootupdate.elf bin2h 0xff $(TARGETS)
 
 main.elf:	main.c genubrr.h bootloaderconfig.h 
 	$(COMPILE) -o main.elf $(LDFLAGS) main.c
@@ -73,7 +73,6 @@ main.bin:	main.elf
 main.hex:	main.elf
 	rm -f main.hex main.eep.hex
 	avr-objcopy -j .text -j .data -O ihex main.elf main.hex
-	./checksize main.elf
 
 dummy.bin: 0xff
 	bash -c './0xff |dd of=dummy.bin bs=1 count=$$[0x$(BOOTLOADER_ADDRESS)]'
