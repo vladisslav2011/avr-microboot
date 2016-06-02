@@ -36,7 +36,7 @@ Restart the MCU while maintaining configured bootloader start condition (just re
 
 Build and upload main firmware to the MCU:
 
-     commandline/boot /dev/ttyUSB0 mainfimware.bin [-v]
+     commandline/boot /dev/ttyUSB0 mainfirmware.bin [-v]
 
 Supply optional 3rd argument (anything for now) to enable verification: ~2 times longer upload.
 
