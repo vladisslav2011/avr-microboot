@@ -6,7 +6,7 @@
 #include <avr/wdt.h>
 #include <avr/boot.h>
 
-unsigned char PROGMEM bootloader[]={
+const unsigned char PROGMEM bootloader[]={
 #include "bootimage.h"
 };
 

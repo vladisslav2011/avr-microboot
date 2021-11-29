@@ -40,7 +40,8 @@ void __cmain(void)
 }
 
 
-void leaveBootloader() {
+__attribute__ ((naked)) void leaveBootloader(void)
+{
 	UCSRB=0;
 	DDRD=0;
 	PORTD=0;
@@ -48,6 +49,7 @@ void leaveBootloader() {
 //	boot_rww_enable();
 	asm volatile ( "push __zero_reg__;");
 	asm volatile ( "push __zero_reg__;");
+	asm volatile ( "ret;");
 }
 
 
@@ -139,13 +141,13 @@ void main(void)
 {
 	/* initialize hardware */
 //	wdt_disable();
-	init_usart();
-	UDR='B';
 	/* jump to application if jumper is set */
 	if (!BOOTLOADER_CONDITION)
 	{
 		leaveBootloader();
 	}
+	init_usart();
+	UDR='B';
 
 	while(1)    /* main event loop */
 	{
